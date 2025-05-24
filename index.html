@@ -46,7 +46,7 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main class="container m-auto">
         <!-- hero section here -->
         <section class="max-w-[752px] mx-auto">
             <div class="sectiontop flex flex-col items-center text-center gap-4">
@@ -61,15 +61,19 @@
         </section>
         <!-- feature section below -->
          <section>
-            <div class="featurecontainer">
-                <h2>Adopt Your Best Friend</h2>
-                <p>Just like a plant-based diet and exercise, positive friendships have countless benefits. Among them are reducing stress, boosting emotional resilience, improving confidence, and diminishing loneliness.</p>
+            <div class="featurecontainer mb-8">
+                <div class="about max-w-[752px] mx-auto">
+                   <h2 class="font-bold text-center text-2xl md:text-4xl mb-2">Adopt Your Best Friend</h2>
+                    <p class="text-center">Just like a plant-based diet and exercise, positive friendships have countless benefits. Among them are reducing stress, boosting emotional resilience, improving confidence, and diminishing loneliness.</p> 
+                </div>
             </div>
             <!-- category of pets -->
-             <div id="petcategory"></div>
+                <div id="petcategory" class="grid gap-y-2 grid-cols-2 md:grid-cols-4 justify-items-center w-full "></div>
          </section>
     </main>
+    <footer class="h-20"></footer>
     <script src="js/navbar.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
