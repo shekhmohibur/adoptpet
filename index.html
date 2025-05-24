@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adop Pet</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- google gonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="fixed w-full bg-white py-5">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="drop-down md:hidden relative">
+                    <i onclick="clickToDropDown()" class="fa-solid fa-bars px-2 text-2xl btn bg-transparent border-none"></i>
+                    <ul id="menu-drop" class="navlink-container hidden flex-col absolute bg-gray-200 rounded-sm">
+                        <li><a class="btn bg-transparent border-none hover:bg-[#0E7A81] hover:text-white" href="#">Home</a></li>
+                        <li><a class="btn bg-transparent border-none hover:bg-[#0E7A81] hover:text-white" href="#">Shop</a></li>
+                        <li><a class="btn bg-transparent border-none hover:bg-[#0E7A81] hover:text-white" href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="logo">
+                    <a href="index.html" class="flex gap-2">
+                        <img class="w-10" src="assets/logo.webp" alt="logo">
+                        <span class="font-bold text-2xl">Peddy</span>
+                    </a>
+                </div>
+                <div class="nav-links hidden md:block lg:block">
+                    <ul class="nav-container flex gap-8">
+                        <li><a class="btn bg-transparent border-none hover:bg-[#0E7A81] hover:text-white" href="#">Home</a></li>
+                        <li><a class="btn bg-transparent border-none hover:bg-[#0E7A81] hover:text-white" href="#">Shop</a></li>
+                        <li><a class="btn bg-transparent border-none hover:bg-[#0E7A81] hover:text-white" href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="user-icon mr-2">
+                    <i class="fa-solid fa-circle-user text-3xl text-gray-400 cursor-pointer"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- hero section here -->
+        <section class="max-w-[752px] mx-auto">
+            <div class="sectiontop flex flex-col items-center text-center gap-4">
+                <span class="md:text-2xl mt-20">Bringing Families Together ❤️‍🔥 </span>
+                <h1 class="text-4xl md:text-7xl font-bold">Your Path to Adoption Starts Here</h1>
+                <p class="text-base">Adopting a pet gives animals a second chance. It saves lives and brings joy to your home. Shelters have many loving pets waiting for you. Choose adoption, change a life.</p>
+                <button class="btn bg-[#0E7A81] text-white rounded-xl">View More</button>
+            </div>
+            <div class="sectionbottom">
+                <img src="assets/pet.webp" alt="Pets hero image">
+            </div>
+        </section>
+    </main>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>
