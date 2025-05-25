@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <nav class="fixed w-full bg-white py-5">
+        <nav class="fixed w-full bg-white py-5 z-50">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="drop-down md:hidden relative">
                     <i onclick="clickToDropDown()" class="fa-solid fa-bars px-2 text-2xl btn bg-transparent border-none"></i>
@@ -71,14 +71,31 @@
                 <div id="petcategory" class="grid gap-y-2 grid-cols-2 md:grid-cols-4 justify-items-center w-full ">
                 </div>
             <div class="flex justify-between items-center mt-8">
-                <h2 class="font-semibold">Best Deal For You</h2>
+                <h2 class="font-semibold md:text-2xl">Best Deal For You</h2>
                 <button class="btn bg-[#0E7A81] text-white rounded-lg">Sort by Price</button>
             </div>
          </section>
          <!-- display all pets cart -->
-          <section class="grid grid-cols ">
-            <div id="pets-cart" class="grid col-span-3 grid-cols-1 md:grid-cols-2">
-
+          <section class="grid grid-cols-4">
+            <div id="pets-cart" class="grid order-2 lg:order-none col-span-4 lg:col-span-3 md:grid-cols-3">
+            </div>
+        <!-- showing liked carts  -->
+            <div class="grid justify-center sm:col-span-4 lg:col-span-1 order-1">
+                <div class="card bg-base-100 w-96 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <img
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Shoes"
+                    class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Shoes!</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div class="card-actions">
+                    <button class="btn btn-primary">Buy Now</button>
+                    </div>
+                </div>
+                </div>
             </div>
           </section>
     </main>
