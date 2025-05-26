@@ -38,13 +38,13 @@ const displayAllPets = (allPets) => {
     allPets.forEach((pet) => {
         console.log(pet)
         const cartContainer = document.createElement('div');
-        cartContainer.classList.add('card');
+        cartContainer.classList.add('card', 'shadow-md');
         cartContainer.innerHTML =`
-            <figure class="px-10 pt-10">
+            <figure class="px-5 pt-5 h-72">
                 <img
                 src="${pet.image}"
                 alt="Shoes"
-                class="rounded-xl" />
+                class="rounded-xl object-cover w-full" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title text-2xl font-bold">${pet.pet_name}<h2>
