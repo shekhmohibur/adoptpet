@@ -80,24 +80,25 @@
             <div id="pets-cart" class="grid order-2 lg:order-none col-span-4 lg:col-span-3 md:grid-cols-3">
             </div>
         <!-- showing liked carts  -->
-            <div class="grid justify-center lg:col-span-1 order-1">
-                <div class="card bg-base-100 shadow-md grid gap-y-0 md:h-[500px] lg:h-[400px]">
-                    <div class="grid md:grid-cols-2 grid-rows-4">
-                    <div class="px-2 pt-2">
-                       <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes"
-                        class="rounded-xl" /> 
-                    </div>
-                    <div class="px-2 pt-2">
-                       <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes"
-                        class="rounded-xl" /> 
-                    </div>
+            <div class="grid justify-center lg:col-span-1 order-1 lg:mt-10">
+                <div class="card bg-base-100 shadow-md grid gap-y-0 md:h-[500px] lg:h-[400px] overflow-scroll">
+                    <div id="likedPets" class="grid md:grid-cols-2 grid-rows-4">
                 </div>
             </div>
           </section>
+        <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+        <dialog id="adopt-modal" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+            </form>
+            </div>
+        </div>
+        </dialog>
     </main>
     <footer class="h-20"></footer>
     <script src="js/navbar.js"></script>

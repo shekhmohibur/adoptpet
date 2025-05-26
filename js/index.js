@@ -9,6 +9,7 @@ const allPetsCarts = async() => {
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
     const data = await res.json();
     displayAllPets(data.pets)
+    showThumbnail(data.pets)
 }
 // loading pets cart based on category
 const specificPetsCarts = async(category) => {
@@ -40,6 +41,27 @@ const displayCategoryBtn = (category) => {
             buttonActive.classList.add('activated');
         });
     });   
+} 
+//displaying thumbnail after click like button
+const showThumbnail = (thumbnails) => {
+    const likedPets = document.getElementById('likedPets');
+    console.log(thumbnails)
+    thumbnails.forEach(thumbnail => {
+    const displayThumbnail = document.getElementById(`show-thumbnail-${thumbnail.petId}`);
+    displayThumbnail.addEventListener('click', () => {
+        console.log('clicked')
+        const thumbnailContainer = document.createElement('div');
+        thumbnailContainer.classList.add('px-2','pt-2');
+        displayThumbnail.setAttribute('disabled', true)
+        thumbnailContainer.innerHTML =`
+        <img
+        src="${thumbnail.image}"
+        alt="Shoes"
+        class="rounded-xl h-28 object-cover" /> 
+        `
+        likedPets.append(thumbnailContainer)
+    })
+    })
 }
 // displaying pets carts
 const displayAllPets = (allPets) => {
@@ -88,7 +110,7 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
                     <h2 class="text-lg text-gray-500">Price: ${pet.price == undefined?'No Info':pet.price}</h2>
                 </div>
                 <div class="flex justify-between px-3 pt-3">
-                <i class="btn pt-2 hover:bg-[#0E7A81] fa-regular fa-thumbs-up text-2xl hover:text-white"></i>
+                <i id="show-thumbnail-${pet.petId}" class="btn pt-2 hover:bg-[#0E7A81] fa-regular fa-thumbs-up text-2xl hover:text-white"></i>
                 <button class="btn px-3 text-[#0E7A81] text-lg hover:bg-[#0E7A81] hover:text-white">Adopt</button>
                 <button class="btn px-3 text-[#0E7A81] text-lg hover:bg-[#0E7A81] hover:text-white">Details</button>
                 </div>
@@ -97,3 +119,7 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
         petsCart.append(cartContainer);
     })
 }
+
+    document.getElementById('adopt-modal').addEventListener('click', (event) =>{
+        event.target.showModal()
+    })
