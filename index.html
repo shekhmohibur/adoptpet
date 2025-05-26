@@ -72,7 +72,7 @@
                 </div>
             <div class="flex justify-between items-center mt-8">
                 <h2 class="font-semibold md:text-2xl">Best Deal For You</h2>
-                <button class="btn bg-[#0E7A81] text-white rounded-lg">Sort by Price</button>
+                <button id="low-to-high" class="btn bg-[#0E7A81] text-white rounded-lg">Sort by Price</button>
             </div>
          </section>
          <!-- display all pets cart -->
@@ -82,12 +82,11 @@
         <!-- showing liked carts  -->
             <div class="grid justify-center lg:col-span-1 order-1 lg:mt-10">
                 <div class="card bg-base-100 shadow-md grid gap-y-0 md:h-[500px] lg:h-[400px] overflow-scroll">
-                    <div id="likedPets" class="grid md:grid-cols-2 grid-rows-4">
+                    <div id="likedPets" class="grid grid-cols-2 grid-rows-4">
                 </div>
             </div>
           </section>
           <!-- modal for showing pets details -->
-        <button class="btn hidden" onclick="detailsModal.showModal()">open modal</button>
         <dialog id="detailsModal" class="modal">
         <div id="modalDetails" class="bg-white md:w-[600px] p-4">
         </div>

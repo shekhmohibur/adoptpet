@@ -2,27 +2,31 @@
 const petCategory = async() => {
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/categories');
     const data = await res.json();
-    displayCategoryBtn(data.categories)
+    displayCategoryBtn(data?.categories)
 }
 // loading pets carts from api
 const allPetsCarts = async() => {
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
     const data = await res.json();
-    displayAllPets(data.pets)
-    showThumbnail(data.pets)
-    adoptUsingId(data.pets)
+    displayAllPets(data?.pets)
+    showThumbnail(data?.pets)
+    adoptUsingId(data?.pets)
+    sortPetPrice(data?.pets)
 }
 // loading pets cart based on category
 const specificPetsCarts = async(category) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
     const data = await res.json();
-    displayAllPets(data.data)
+    displayAllPets(data?.data)
+    showThumbnail(data?.data)
+    adoptUsingId(data?.data)
+    sortPetPrice(data?.data)
 }
 // loading pets details based on pets id
 const detailsPetsCarts = async(petId) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
     const data = await res.json();
-    displayPetsBio(data.petData)
+    displayPetsBio(data?.petData)
 }
 
 petCategory();
@@ -132,11 +136,24 @@ const adoptUsingId = (id) => {
         })
     })
 }
+//sorting pets based on price
+const sortPetPrice = (pets) => {
+    const sortBtn = document.getElementById('low-to-high');
+    sortBtn.addEventListener('click', ()=>{
+        pets.sort((a, b) => {
+        if (a.price === null) return 1;
+        if (b.price === null) return -1;
+        return a.price - b.price;
+    });
+    displayAllPets(pets);
+    })
+  
+};
 // displaying pets carts
 const displayAllPets = (allPets) => {
     const petsCart = document.getElementById('pets-cart');
     petsCart.innerHTML='';
-    if(allPets.length == 0){
+            if(allPets.length === 0){
             petsCart.classList.remove('grid');
             petsCart.innerHTML=`
             <div class="bg-gray-200 h-[500px] rounded-md flex flex-col justify-center items-center gap-3">
@@ -152,7 +169,6 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
     allPets.forEach((pet) => {
         const cartContainer = document.createElement('div');
         cartContainer.classList.add('card', 'shadow-md');
-        
         cartContainer.innerHTML =`
             <figure class="px-5 pt-5 h-72">
                 <img
