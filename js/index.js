@@ -169,7 +169,7 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
                 <div class="flex items-center gap-2">
                     <img src="https://img.icons8.com/?size=100&id=85102&format=png&color=838383" class="w-7">
                     <h2 class="text-lg text-gray-500">Birth: ${pet.date_of_birth == undefined?'No Info':pet.date_of_birth}</h2>
-                </div>
+                    </div>
                 <div class="flex items-center gap-2">
                     <img src="https://img.icons8.com/?size=100&id=70834&format=png&color=838383" class="w-7">
                     <h2 class="text-lg text-gray-500">Gender: ${pet.gender == undefined?'No Info':pet.gender}</h2>
