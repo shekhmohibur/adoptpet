@@ -10,20 +10,19 @@ const allPetsCarts = async() => {
     const data = await res.json();
     displayAllPets(data.pets)
     showThumbnail(data.pets)
+    adoptUsingId(data.pets)
 }
 // loading pets cart based on category
 const specificPetsCarts = async(category) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
     const data = await res.json();
     displayAllPets(data.data)
-    
 }
 // loading pets details based on pets id
 const detailsPetsCarts = async(petId) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
     const data = await res.json();
     displayPetsBio(data.petData)
-    
 }
 
 petCategory();
@@ -40,7 +39,6 @@ const displayCategoryBtn = (category) => {
         petCategory.append(buttonContainer);
         const buttonActive = document.getElementById(`btn-${item.id}`);
         buttonActive.addEventListener('click', () => {
-            // Remove 'activated' class from all buttons
             const allButtons = document.querySelectorAll('.btnAction');
             allButtons.forEach(btn => btn.classList.remove('activated'));
             specificPetsCarts(item.category);
@@ -55,7 +53,6 @@ const showThumbnail = (thumbnails) => {
     thumbnails.forEach(thumbnail => {
     const displayThumbnail = document.getElementById(`show-thumbnail-${thumbnail.petId}`);
     displayThumbnail.addEventListener('click', () => {
-        console.log('clicked')
         const thumbnailContainer = document.createElement('div');
         thumbnailContainer.classList.add('px-2','pt-2');
         displayThumbnail.setAttribute('disabled', true)
@@ -69,18 +66,9 @@ const showThumbnail = (thumbnails) => {
     })
     })
 }
-/*<div class="modal-box">
-            <h3 class="text-lg font-bold">Hello!</h3>
-            <p class="py-4">Press ESC key or click the button below to close</p>
-            <div class="modal-action">
-            <form method="dialog">
-                <button class="btn">Close</button>
-            </form>
-            </div>
-        </div> */
-//displaying pets infromation in modal
+//displaying pets desails after clicking details
 const displayPetsBio = (details) => {
-    document.getElementById('adoptModal').showModal();
+    document.getElementById('detailsModal').showModal();
     document.getElementById('modalDetails').innerHTML = `
         <div>
             <img src="${details.image}" class="rounded-xl w-full">
@@ -105,7 +93,7 @@ const displayPetsBio = (details) => {
                 </div>
                 <div class="flex items-center gap-2">
                     <img src="https://img.icons8.com/?size=100&id=85843&format=png&color=838383" class="w-7">
-                    <h2 class="text-lg text-gray-500">Price: ${details.price == undefined?'No Info':details.price}</h2>
+                    <h2 class="text-lg text-gray-500">Price: ${details.price == undefined?'No Info':details.price}$</h2>
                 </div>
         </div>
         <div>
@@ -121,6 +109,28 @@ const displayPetsBio = (details) => {
         </div>
     `;
     
+}
+//displaying pets adoption in modal
+const adoptUsingId = (id) => {
+    const showInterval = document.getElementById('showInterval');
+    const adoptModal = document.getElementById('adoptModal');
+    id.forEach(pets =>{
+        const adoptId = document.getElementById(`adopt-${pets.petId}`);
+        adoptId.addEventListener('click', () => {
+            adoptModal.showModal();
+        let seconds = 3;
+        showInterval.innerText = seconds;
+        const interval = setInterval(() =>{
+            seconds--;
+        adoptId.setAttribute('disabled', true)
+        showInterval.innerText = seconds;
+        if(seconds <= 1){
+            clearInterval(interval);
+            adoptModal.close();
+        }
+        }, 1000)
+        })
+    })
 }
 // displaying pets carts
 const displayAllPets = (allPets) => {
@@ -166,12 +176,12 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <img src="https://img.icons8.com/?size=100&id=85843&format=png&color=838383" class="w-7">
-                    <h2 class="text-lg text-gray-500">Price: ${pet.price == undefined?'No Info':pet.price}</h2>
+                    <h2 class="text-lg text-gray-500">Price: ${pet.price == undefined?'No Info':pet.price}$</h2>
                 </div>
                 <div class="flex justify-between px-3 pt-3">
                 <i id="show-thumbnail-${pet.petId}" class="btn pt-2 hover:bg-[#0E7A81] fa-regular fa-thumbs-up text-2xl hover:text-white"></i>
-                <button onclick="detailsPetsCarts(${pet.petId})" class="btn px-3 text-[#0E7A81] text-lg hover:bg-[#0E7A81] hover:text-white">Adopt</button>
-                <button class="btn px-3 text-[#0E7A81] text-lg hover:bg-[#0E7A81] hover:text-white">Details</button>
+                <button id="adopt-${pet.petId}" class="btn px-3 text-[#0E7A81] text-lg hover:bg-[#0E7A81] hover:text-white adoptBtn">Adopt</button>
+                <button onclick="detailsPetsCarts(${pet.petId})" class="btn px-3 text-[#0E7A81] text-lg hover:bg-[#0E7A81] hover:text-white">Details</button>
                 </div>
             </div>
         `;

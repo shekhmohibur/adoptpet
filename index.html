@@ -86,11 +86,23 @@
                 </div>
             </div>
           </section>
-        <button class="btn hidden" onclick="adoptModal.showModal()">open modal</button>
-        <dialog id="adoptModal" class="modal">
+          <!-- modal for showing pets details -->
+        <button class="btn hidden" onclick="detailsModal.showModal()">open modal</button>
+        <dialog id="detailsModal" class="modal">
         <div id="modalDetails" class="bg-white md:w-[600px] p-4">
         </div>
         </dialog>
+          <!-- modal for showing pets details -->
+        <!--  -->
+    <dialog id="adoptModal" class="modal">
+    <div class="modal-box flex flex-col justify-center gap-2">
+        <img class="w-16 mx-auto" src="https://img.icons8.com/?size=100&id=kRZicCB1E8B8&format=png&color=000000">
+        <h3 class="font-extrabold text-center text-4xl">Congrates</h3>
+        <p class=" text-center text-lg font-semibold">Adoption Preccess is Start For Your Pet</p>
+        <p id="showInterval" class="text-5xl py-4 text-center font-bold"></p>
+    </div>
+    </form>
+    </dialog>
     </main>
     <footer class="h-20"></footer>
     <script src="js/navbar.js"></script>
