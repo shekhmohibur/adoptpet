@@ -10,6 +10,14 @@ const allPetsCarts = async() => {
     const data = await res.json();
     displayAllPets(data.pets)
 }
+// loading pets cart based on category
+const specificPetsCarts = async(category) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
+    const data = await res.json();
+    displayAllPets(data.data)
+    
+}
+
 petCategory();
 allPetsCarts();
 
@@ -27,6 +35,7 @@ const displayCategoryBtn = (category) => {
             // Remove 'activated' class from all buttons
             const allButtons = document.querySelectorAll('.btnAction');
             allButtons.forEach(btn => btn.classList.remove('activated'));
+            specificPetsCarts(item.category);
             // Add 'activated' class to the clicked button
             buttonActive.classList.add('activated');
         });
@@ -35,10 +44,24 @@ const displayCategoryBtn = (category) => {
 // displaying pets carts
 const displayAllPets = (allPets) => {
     const petsCart = document.getElementById('pets-cart');
+    petsCart.innerHTML='';
+    if(allPets.length == 0){
+            petsCart.classList.remove('grid');
+            petsCart.innerHTML=`
+            <div class="bg-gray-200 h-[500px] rounded-md flex flex-col justify-center items-center gap-3">
+                <img src="assets/error.webp" class="w-40">
+                <h2 class="text-2xl font-bold">No Information Available</h2>
+                <p class="max-w-[700px] text-center text-lg">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
+its layout. The point of using Lorem Ipsum is that it has a.</p>
+            </div>
+            `;
+        }else{
+            petsCart.classList.add('grid');
+        }
     allPets.forEach((pet) => {
-        console.log(pet)
         const cartContainer = document.createElement('div');
         cartContainer.classList.add('card', 'shadow-md');
+        
         cartContainer.innerHTML =`
             <figure class="px-5 pt-5 h-72">
                 <img
@@ -71,7 +94,6 @@ const displayAllPets = (allPets) => {
                 </div>
             </div>
         `;
-        console.log(petsCart)
         petsCart.append(cartContainer);
     })
 }
