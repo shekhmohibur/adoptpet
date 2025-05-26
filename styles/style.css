@@ -2,6 +2,6 @@
     font-family: "Lato", sans-serif;
 }
 .activated{
-    border: 2px solid rgb(14, 122, 129);
+    border: 2px solid #0e7a81;
     background: rgba(14, 122, 129, 0.1);
 }
